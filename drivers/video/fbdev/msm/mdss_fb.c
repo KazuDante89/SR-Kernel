@@ -52,7 +52,6 @@
 #include <linux/pm_qos.h>
 #include <sync.h>
 #include <sw_sync.h>
-#include <linux/devfreq_boost.h>
 
 #include "mdss_dsi.h"
 #include "mdss_fb.h"
