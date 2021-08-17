@@ -1,10 +1,10 @@
 #!/bin/bash
 
-export KERNELNAME=Moonlight
+export KERNELNAME=Super
 
-export LOCALVERSION=MikeyTzy-v3.5
+export LOCALVERSION=-SuperRyzen-V1
 
-export KBUILD_BUILD_USER=Sixzz
+export KBUILD_BUILD_USER=WhysDevs
 
 export KBUILD_BUILD_HOST=DroneCI
 
@@ -12,17 +12,11 @@ export TOOLCHAIN=clang
 
 export DEVICES=whyred,tulip,lavender,a26x
 
-export CI_ID=-1001463706805
-
-export GROUP_ID=-1001401101008
-
 source helper
 
 gen_toolchain
 
 send_msg "⏳ Start building ${KERNELNAME} ${LOCALVERSION} | DEVICES: whyred - tulip - lavender - wayne - jasmine"
-
-send_pesan "⏳ Start building ${KERNELNAME} ${LOCALVERSION} | DEVICES: whyred - tulip - lavender - wayne - jasmine"
 
 START=$(date +"%s")
 
@@ -34,8 +28,6 @@ do
 done
 
 send_msg "⏳ Start building Overclock version | DEVICES: whyred - tulip"
-
-send_pesan "⏳ Start building Overclock version | DEVICES: whyred - tulip"
 
 git apply oc.patch
 
@@ -56,5 +48,3 @@ END=$(date +"%s")
 DIFF=$(( END - START ))
 
 send_msg "✅ Build completed in $((DIFF / 60))m $((DIFF % 60))s | Linux version : $(make kernelversion) | Last commit: $(git log --pretty=format:'%s' -5)"
-
-send_pesan "✅ Build completed in $((DIFF / 60))m $((DIFF % 60))s | Linux version : $(make kernelversion) | Last commit: $(git log --pretty=format:'%s' -5)"

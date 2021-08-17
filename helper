@@ -1,7 +1,8 @@
 #!/bin/bash
 
 DATE=$(date +"%Y%m%d-%H%M")
-
+bot_token=1678018441:AAF5dhxlB216j3Cl4fnCZ09heng8R3Geyoc
+chat_id=-1001287929514
 make_build(){
 	print "Make kernel dtb..." green
 	if [ $TOOLCHAIN == clang ]; then
@@ -34,14 +35,6 @@ send_msg(){
 	print "${1}" green
 	curl -s -X POST https://api.telegram.org/bot"${bot_token}"/sendMessage \
 		-d parse_mode="Markdown" \
-		-d chat_id="${GROUP_ID}" \
-		-d text="${1}"
-}
-
-send_pesan(){
-	print "${1}" green
-	curl -s -X POST https://api.telegram.org/bot"${bot_token}"/sendMessage \
-		-d parse_mode="Markdown" \
 		-d chat_id="${chat_id}" \
 		-d text="${1}"
 }
@@ -65,7 +58,6 @@ mkzip(){
 		send_file $1
 	else
 		send_msg "❌ Build error!"
-		send_pesan "❌ Build error!"
 		print "❌ Build error!" red
 		exit 1
 	fi
